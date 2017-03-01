@@ -13,12 +13,11 @@ conn = pymysql.connect(host='localhost',
                        # unix_socket='/tmp/mysql.sock',
                        user='root',
                        passwd="   ",
-                       db='FT',
-                       charset='utf8',
+                       db='FTTT',
+                       charset='utf8mb4',
                        cursorclass=pymysql.cursors.DictCursor)
 
 url='http://www.ftchinese.com/channel/chinareport.html?page=2'
-
 
 def store(title, content):
     with conn.cursor() as cursor:
@@ -44,8 +43,8 @@ try:
             print(title_[i].text)
             print(content_[i].text)
             print(time[i].text)
-            store(i, i)
-
+            store(title_[i].text,content_[i].text)
+            # store('sspk', "dd")
 
     with conn.cursor() as cursor:
         # Create a new record
